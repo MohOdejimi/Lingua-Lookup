@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Word Finder</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/102bc8442d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- Project -->
+  <header>
+    <a href = '/'><i class="fa-solid fa-book-open-reader"></i></a>
+    <i id = 'toggle' class="fa-solid fa-moon"></i>
+    <i id = 'sun' class="fa-regular fa-lightbulb"></i>
+  </header>
+  
+  <!----Input Field --->
+  
+  <section class = 'searchbar'>
+    <input type = 'text' placeholder = 'Search for a word'>
+     <button type = 'submit'><i class="fa-solid fa-magnifying-glass"></i></button>
+  </section>
+  
+  <!--- content--->
+  <section class = 'content'>
+   <div>
+    <center><i class="fa-solid fa-book-open-reader"></i></center>
+    <center><h3>Welcome to Word Finder</h3></center>
+    <center>An online source for word definitions, transcriptions, meanings and a whole lot more.</center>
+   </div>
+  </section>
+  
+  <!---Information-->
+  <div class = 'root'>
+    <audio id = 'sound'></audio>
+    <div class = 'title'>
+      <h2></h2>
+      <button onclick="playSound()">
+        <i class="fa-solid fa-volume-up"></i>
+      </button>
+    </div>
+    <h4 class = 'transcription'></h4>
+    <div class = 'word-info'>
+      <h4 id = 'info'></h4>
+    </div>
+    <section class = 'meanings'>
+      
+    </section>
+    <section class = 'meanings2'>
+      
+      
+    </section>
+    <section class = 'error1'>
+      
+    </section>
+    <section class = 'error2'>
+      
+    </section>
+    <hr>
+    <section class = 'title2'>
+      <h2></h2>
+    </section>
+    <section class='secondPart1'>
+    
+    </section>
+  </div>
+
+  
+  <script src="main.js"></script>
+</body>
+</html>

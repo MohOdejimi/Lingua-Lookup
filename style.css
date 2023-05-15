@@ -1,0 +1,103 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Oxygen;
+    background-color: white;
+}
+header {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+header a {
+  color: #008ecc;
+}
+#sun {
+  display: none;
+}
+#sun, #toggle {
+  cursor: pointer;
+}
+.searchbar {
+  padding: 1rem 2rem;
+  display: flex;
+  box-shadow: 1px .5px black;
+}
+.searchbar input {
+  border: none;
+  background: lightgrey;
+  flex: 0.85;
+  padding: 1em;
+  font-size: 1em;
+  outline: none;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.searchbar button {
+  outline: none;
+  border: none;
+  flex: 0.15;
+}
+.searchbar i {
+  font-size: 1.3rem;
+}
+.content {
+  padding: 2rem;
+  padding-top: 4rem;
+  display: flex;
+  justify-content: center;
+  display: block;
+}
+.content div {
+  align-self: center;
+}
+.content i {
+  font-size: 10rem;
+  color: #008ecc;
+}
+.root {
+  padding: 2rem;
+  display: none;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+.title button {
+  border: none;
+  outline: none;
+  background-color: inherit;
+}
+ .title i {
+  font-size: 1.5rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+.transcription {
+  margin-top: -1rem;
+  color: #008ecc;
+}
+#info {
+  position: relative;
+}
+
+.meanings p, .meanings2 p, .secondPart1 p {
+  font-weight: 300;
+  color: grey;
+}
+.error2 {
+  margin-top: 1.5rem;
+}
+ @media all and (min-width: 800px) {
+   .searchbar {
+     justify-content: center;
+   }
+   .searchbar input {
+     flex: 0.5;
+   }
+   .searchbar button {
+     flex: 0.1;
+   }
+ }
