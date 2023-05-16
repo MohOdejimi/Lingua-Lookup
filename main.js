@@ -48,7 +48,16 @@ async function search () {
      const responseJson = await response.json()
     const data = responseJson
     console.log(data)
-    sound.setAttribute("src", data[0].phonetics[0].audio)
+    if(data[0].phonetics[0].audio !== '') {
+      sound.setAttribute("src", data[0].phonetics[0].audio)
+    } else if (data[0].phonetics[1].audio !== '') {
+      sound.setAttribute("src", data[0].phonetics[1].audio)
+    } else if(data[0].phonetics[0].audio !== '') {
+        sound.setAttribute("src", data[0].phonetics[0].audio)
+      } else {
+      sound.setAttribute("src", data[0].phonetics[2].audio)
+      }
+    
     document.querySelector('.title h2').innerText = `${word}`
     document.querySelector('.transcription').innerText = data[0].phonetic
     document.querySelector('.word-info h4').innerText = (data[0].meanings[0].partOfSpeech).toLowerCase()
@@ -67,7 +76,6 @@ async function search () {
     secondBlock.innerHTML = ''
     meanings.appendChild(ul)
     if(data.length > 1) {
-      console.log('good')
       for (let i = 0; i < (data[0].meanings[0].definitions.length); i++) {
         const li = document.createElement('li')
         const p = document.createElement('p')
@@ -84,6 +92,8 @@ async function search () {
     document.querySelector('.title2 h2').innerText = (data[0].meanings[1].partOfSpeech).toLowerCase()
     document.querySelector('.title2 h2').style.fontSize = '1rem'
     const unorderedList = document.createElement('ul')
+    
+    
      for (let i = 0; i < (data[0].meanings[1].definitions.length); i++) {
        const list = document.createElement('li')
        const para = document.createElement('p')
@@ -95,6 +105,23 @@ async function search () {
      }
      document.querySelector('.secondPart1').innerHTML = ''
      document.querySelector('.secondPart1').appendChild(unorderedList)
+     
+     
+     const synonyms = document.createElement('ol')
+     for(let i = 0; i < (data[0].meanings[0].synonyms.length); i++) {
+       const synonymsList = document.createElement('li')
+       synonymsList.innerText = data[0].meanings[0].synonyms[i]
+       synonyms.appendChild(synonymsList)
+       console.log(synonymsList)
+     }
+     const header = document.createElement('h3')
+     header.innerText = 'Synonyms'
+     document.querySelector('.synonyms').innerHTML = ''
+     
+     if(synonyms.childNodes.length !== 0) {
+       document.querySelector('.synonyms').append(header, synonyms)
+       header.style.fontSize = '1rem'
+     }
    }
    catch {
      /*document.querySelector('.error1').innerText = `Sorry pal, we couldn't find definitions for the word you were looking for`

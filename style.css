@@ -82,13 +82,18 @@ h2 {
 #info {
   position: relative;
 }
-
+i:hover {
+  cursor: pointer;
+}
 .meanings p, .meanings2 p, .secondPart1 p {
   font-weight: 300;
   color: grey;
 }
 .error2 {
   margin-top: 1.5rem;
+}
+.synonyms {
+  margin-top: 1.3rem;
 }
  @media all and (min-width: 800px) {
    .searchbar {
