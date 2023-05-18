@@ -57,16 +57,27 @@ async function search () {
       } else {
       sound.setAttribute("src", data[0].phonetics[2].audio)
       }
-    
     document.querySelector('.title h2').innerText = `${word}`
     document.querySelector('.transcription').innerText = data[0].phonetic
     document.querySelector('.word-info h4').innerText = (data[0].meanings[0].partOfSpeech).toLowerCase()
+    
+    let span = document.querySelector('span')
+    const hr = document.createElement('hr')
+    if(span.innerHTML === '') {
+      span.append(hr)
+    }
+    /* First Section */
+    
     const ul = document.createElement('ul')
     for(let i = 0; i < (data[0].meanings[0].definitions.length); i++) {
       const li = document.createElement('li')
       const p = document.createElement('p')
       li.innerText = data[0].meanings[0].definitions[i].definition
-      p.innerText = data[0].meanings[0].definitions[i].example
+      if(typeof data[0].meanings[0].definitions[i].example !== 'undefined'){
+        p.innerText = data[0].meanings[0].definitions[i].example
+      } else {
+        p.innerText = ''
+      }
       li.appendChild(p)
       ul.appendChild(li)
       console.log(li)
@@ -75,39 +86,41 @@ async function search () {
     meanings.innerHTML = ''
     secondBlock.innerHTML = ''
     meanings.appendChild(ul)
-    if(data.length > 1) {
-      for (let i = 0; i < (data[0].meanings[0].definitions.length); i++) {
-        const li = document.createElement('li')
-        const p = document.createElement('p')
-        li.innerText = data[0].meanings[1].definitions[i].definition
-        p.innerText = data[0].meanings[1].definitions[i].example
-        li.appendChild(p)
-        ul.appendChild(li)
-        console.log(li)
+    
+    /* Second Section */
+    const secondHeader = document.createElement('h4')
+    secondHeader.innerText = data[0].meanings[1].partOfSpeech
+    const ulist = document.createElement('ul')
+    for (let i = 0; i < (data[0].meanings[1].definitions.length); i++) {
+      const list = document.createElement('li')
+      const para = document.createElement('p')
+      list.innerText = data[0].meanings[1].definitions[i].definition
+      if (typeof data[0].meanings[1].definitions[i].example !== 'undefined') {
+        para.innerText = data[0].meanings[1].definitions[i].example
+      } else {
+        para.innerText = ''
       }
+      list.appendChild(para)
+      ulist.appendChild(list)
     }
     secondBlock.innerHTML = ''
-    meanings.innerHTML = ''
-    secondBlock.appendChild(ul)
-    document.querySelector('.title2 h2').innerText = (data[0].meanings[1].partOfSpeech).toLowerCase()
-    document.querySelector('.title2 h2').style.fontSize = '1rem'
-    const unorderedList = document.createElement('ul')
+    secondBlock.append(secondHeader, ulist)
     
     
-     for (let i = 0; i < (data[0].meanings[1].definitions.length); i++) {
-       const list = document.createElement('li')
-       const para = document.createElement('p')
-       list.innerText = data[0].meanings[1].definitions[i].definition
-       para.innerText = data[0].meanings[1].definitions[i].example
-       list.appendChild(para)
-       unorderedList.appendChild(list)
-       console.log(list)
-     }
-     document.querySelector('.secondPart1').innerHTML = ''
-     document.querySelector('.secondPart1').appendChild(unorderedList)
-     
-     
-     const synonyms = document.createElement('ol')
+    
+    
+    
+    
+
+
+
+
+
+    
+
+    /* Synonyms */
+
+    const synonyms = document.createElement('ol')
      for(let i = 0; i < (data[0].meanings[0].synonyms.length); i++) {
        const synonymsList = document.createElement('li')
        synonymsList.innerText = data[0].meanings[0].synonyms[i]
@@ -121,7 +134,27 @@ async function search () {
      if(synonyms.childNodes.length !== 0) {
        document.querySelector('.synonyms').append(header, synonyms)
        header.style.fontSize = '1rem'
+     } 
+     
+     
+     /* Antonyms */
+     
+     const antonyms = document.createElement('ol')
+     for (let i = 0; i < (data[0].meanings[0].antonyms.length); i++) {
+       const antonymsList = document.createElement('li')
+       antonymsList.innerText = data[0].meanings[0].antonyms[i]
+       antonyms.appendChild(antonymsList)
+       console.log(antonymsList)
      }
+     const antonymsHeader = document.createElement('h3')
+     antonymsHeader.innerText = 'Antonyms'
+     document.querySelector('.antonyms').innerHTML = ''
+     
+     if (antonyms.childNodes.length !== 0) {
+       document.querySelector('.antonyms').append(antonymsHeader, antonyms)
+       antonymsHeader.style.fontSize = '1rem'
+     } 
+     
    }
    catch {
      /*document.querySelector('.error1').innerText = `Sorry pal, we couldn't find definitions for the word you were looking for`
