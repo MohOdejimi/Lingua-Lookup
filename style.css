@@ -95,6 +95,10 @@ i:hover {
 .synonyms {
   margin-top: 1.3rem;
 }
+footer {
+  padding: 2rem;
+  display: none;
+}
  @media all and (min-width: 800px) {
    .searchbar {
      justify-content: center;

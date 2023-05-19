@@ -58,7 +58,11 @@ async function search () {
       sound.setAttribute("src", data[0].phonetics[2].audio)
       }
     document.querySelector('.title h2').innerText = `${word}`
-    document.querySelector('.transcription').innerText = data[0].phonetic
+    if (data[0].phonetic === '' || typeof data[0].phonetic === 'undefined') {
+      document.querySelector('.transcription').innerText = ''
+    } else {
+      document.querySelector('.transcription').innerText = data[0].phonetic
+    }
     document.querySelector('.word-info h4').innerText = (data[0].meanings[0].partOfSpeech).toLowerCase()
     
     let span = document.querySelector('span')
@@ -106,17 +110,6 @@ async function search () {
     secondBlock.innerHTML = ''
     secondBlock.append(secondHeader, ulist)
     
-    
-    
-    
-    
-    
-
-
-
-
-
-    
 
     /* Synonyms */
 
@@ -155,6 +148,10 @@ async function search () {
        antonymsHeader.style.fontSize = '1rem'
      } 
      
+     /* Footer */
+    if(document.querySelector('.root').innerHTML !== '') {
+      document.querySelector('footer').style.display = 'block'
+    }
    }
    catch {
      /*document.querySelector('.error1').innerText = `Sorry pal, we couldn't find definitions for the word you were looking for`
