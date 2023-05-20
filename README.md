@@ -6,3 +6,12 @@
 
 # How it is made:
 Tech used: HTML5, CSS3 and Javascript.
+
+Server/Web Service: The API that was utilized in the development of this project is run on a web server which allows clients to fetch for word definitions, synonyms, antonyms and other word related information. The sever handles and process word requests via the API endpoints, and returning the data back to the client in JSON format. 
+
+Client: The client puts in a valid english or american word into the search bar and then click the search icon. The seach icon listens to the click and runs an asynchronous function that fetches for the word details which is later rendered to the web page.
+
+# Lessons Learned
+
+I discovered how Javascript can be tweaked to perform asynchronous functions with the async and await keyword. The two keyword help in providing a simple and visually appealing syntax to how promise objects are fetched and returned from a web server. In addition, I got hold of how the event loop handles asynchronous functions and data rendering.
+
