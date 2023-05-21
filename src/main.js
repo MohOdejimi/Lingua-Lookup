@@ -8,7 +8,6 @@ const searchbar = document.querySelector('.searchbar')
 const sound = document.querySelector('#sound')
 const meanings = document.querySelector('.meanings')
 const secondBlock = document.querySelector('.meanings2')
-
 function dark () {
     body.style.backgroundColor = 'black'
     toggle.style.color = 'white'
@@ -48,14 +47,11 @@ async function search () {
      const responseJson = await response.json()
     const data = responseJson
     console.log(data)
-    if(data[0].phonetics[0].audio !== '') {
-      sound.setAttribute("src", data[0].phonetics[0].audio)
-    } else if (data[0].phonetics[1].audio !== '') {
-      sound.setAttribute("src", data[0].phonetics[1].audio)
-    } else if(data[0].phonetics[0].audio !== '') {
-        sound.setAttribute("src", data[0].phonetics[0].audio)
-      } else {
-      sound.setAttribute("src", data[0].phonetics[2].audio)
+    sound.setAttribute('src', '')
+      for (let i = 0; i < data[0].phonetics.length; i++) {
+        if(data[0].phonetics[i].audio !== '') {
+          sound.setAttribute("src", data[0].phonetics[i].audio)
+        }
       }
     document.querySelector('.title h2').innerText = `${word}`
     if (data[0].phonetic === '' || typeof data[0].phonetic === 'undefined') {
@@ -158,9 +154,6 @@ async function search () {
      document.querySelector('.error2').innerText = `You can try the search again at later time or head to the web instead.`*/
    }
   }
-
-
-
 function playSound() {
   sound.play();
 }
