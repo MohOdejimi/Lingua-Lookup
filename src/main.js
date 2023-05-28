@@ -35,7 +35,7 @@ function dark () {
 
 const searchBtn = document.querySelector('.searchbar button i')
 searchBtn.addEventListener('click', search)
-
+const queryInput = document.querySelector('.searchbar input')
 
 async function search () {
   try {
@@ -153,7 +153,16 @@ async function search () {
      /*document.querySelector('.error1').innerText = `Sorry pal, we couldn't find definitions for the word you were looking for`
      document.querySelector('.error2').innerText = `You can try the search again at later time or head to the web instead.`*/
    }
+    queryInput.value = ''
   }
+  
+  function handleKeyDown(event) {
+    if (event.keyCode === 13) {
+      search();
+    }
+  }
+  queryInput.addEventListener('keydown', handleKeyDown)
 function playSound() {
   sound.play();
 }
+
